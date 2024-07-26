@@ -81,8 +81,10 @@ class Gene:
     def output_slice(
         self, seq_start, seq_len, model_stride, span=False, majority_overlap=False
     ):
+        #seq_len = 524288
         gene_slice = []
-
+        
+        #ensure that slice_start and slice_end are in between 0 and slice_max
         def clip_boundaries(slice_start, slice_end):
             slice_max = int(seq_len / model_stride)
             slice_start = min(slice_start, slice_max)
